@@ -24,9 +24,8 @@ Find the ZIP file in your Downloads folder and open it and extract the files to 
 
 2. Install ICWTools in your Chrome browser. Do this by entering "chrome://extensions" in Chrome's omnibox.
 On the extensions page, look for the "Developer mode" button on the upper right. Enable developer mode by
-moving the button to the right.
-
-Some buttons on the upper left of the extensions will become visible. Click the "Load unpacked" button and navigate to the location
+moving the button to the right.  Some buttons on the upper left of the extensions will become visible. 
+Click the "Load unpacked" button and navigate to the location
 where you unzipped ICWtools. Click select. You should now see ICWtools in your Chrome extensions list.
 
 3. The ICWtools icon, an arrow pointing down, will appear to the right of the Chrome omnibox. 
