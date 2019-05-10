@@ -47,15 +47,15 @@ column headers, and rows for each in common with person found. Here's what's in 
 - User display name. This is the display name of the original DNA test taker.
 - User GUID. This is the GUID (identification string) Ancestry.com uses to identify the test taker.
 - Results page number. The DNA Match page number this row's data was extracted from.
-- Match Name. The display name of the original DNA test taker's match.
+- Match name. The display name of the original DNA test taker's match.
 - Match GUID. The GUID (identification string) Ancestry.com uses to identify the DNA test taker's match.
-- Match Centigrams. How much DNA the original DNA test taker and the match share.
-- ICW Name. The display name of the person who shares DNA with both the original test taker and the match.
+- Match centigrams. How much DNA the original DNA test taker and the match share.
+- ICW name. The display name of the person who shares DNA with both the original test taker and the match.
 - ICW Guid. The GUID (identification string) Ancestry.com uses to identify the ICW person.
-- ICW Gender. The gender of the ICW person.
-- ICW Centimorgans. The amount of centimorgans the original test taker and the ICW person share.
-- ICW Num Segments. The number of segments the original test taker and the ICW share.
-- ICW Starred. A flag that indicates if the original test taker has starred the ICW person.
+- ICW gender. The gender of the ICW person.
+- ICW centimorgans. The amount of centimorgans the original test taker and the ICW person share.
+- ICW num segments. The number of segments the original test taker and the ICW share.
+- ICW starred. A flag that indicates if the original test taker has starred the ICW person.
 - ICW note. Displays the note that the original test taker added to the ICW person, if it exists.
 
 Note that the ICW's person shared DNA data is *relative to the original test taker*. Ancestry doesn't give
@@ -68,7 +68,7 @@ ICWtools is a tool I wrote for my own use, and I'm making it available for anyon
 But my work on ICWtools is strictly on a time-available basis, so I am not making any promises about support
 and maintenance. 
 
-As long as I'm caveating: Since ICWtools is a Chrome extension, it is completely dependent on Ancestry.com's website. Websites
+As long as I'm caveating: ICWtools is a Chrome extension, it is completely dependent on Ancestry.com's website. Websites
 change how they do things all the time, and any of those changes could make ICWtools inoperable for
 a time, or even permanently.
 
@@ -89,8 +89,8 @@ I urge you to not take my word for any of it and [examine the source code for yo
 
 ## License
 
-ICWtools is made available under the (GNU General Public License v3.0)[https://choosealicense.com/licenses/gpl-3.0/].
-The TL;DR of this license is that (1) anyone can use, copy and modify this code, but (2) if you are thinking of redistributing this
+ICWtools is made available under the [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/).
+The TL;DR of this license is that anyone can use, copy and modify this code, but if you are thinking of redistributing this
 code (say, as part of a commercial product), the GPLv3.0 license imposes additional requirements that you
 should [carefully consider](https://choosealicense.com/licenses/gpl-3.0/).
 
