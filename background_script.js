@@ -10,6 +10,8 @@
 // popup's get_icw_matches query and send it. 
 function process_icw_matches(initial_match,icw_href, icw_matches, popupresponsef) {
 
+	const FILE_VERSION = "1.0"
+
 	// build a record with the fields we're interested in
 	icw_matches.matchGroups.forEach(function(mgroup) {
 		console.log(mgroup);
@@ -23,6 +25,7 @@ function process_icw_matches(initial_match,icw_href, icw_matches, popupresponsef
 			let escapedicwnote = "\"" + m.note + "\"";
 
 			// build the icw string
+			// V1.0 file output
 			let icw_record = 
 				initial_match.sourcedisplayname + "," +
 				initial_match.sourceguid + "," + 
@@ -30,8 +33,8 @@ function process_icw_matches(initial_match,icw_href, icw_matches, popupresponsef
 				initial_match.matchname + "," + 
 				initial_match.matchguid + "," + 
 				initial_match.cm + "," + 
-				m.testGuid + "," + 
 				escapedicwdisplayname + "," + 
+				m.testGuid + "," + 
 				m.subjectGender + "," +
 				m.sharedCentimorgans + "," + 
 				m.sharedSegments + "," + 
@@ -61,9 +64,9 @@ function process_icw_matches(initial_match,icw_href, icw_matches, popupresponsef
 
 		// prepend this long string with column headers and retrieval information
 		var manifest = chrome.runtime.getManifest();
-		let ext_info = "# File produced by " + manifest.name + " version: " + manifest.version + " Created " + Date() + "\n";
+		let ext_info = "# File produced by " + manifest.name + " version: " + manifest.version + " File version " + FILE_VERSION + " Created " + Date() + "\n";
 		let user_info = "# Looking for in common with data for matches for " + initial_match.sourcedisplayname + " GUID: " + initial_match.sourceguid + " from URL " + initial_match.href + "\n";
-		let column_headers = "User display name,User GUID,Results page number,Match Name,Match GUID,Match Centimorgans,ICW GUID,ICW Name,ICW Gender,ICW Centimorgans (rel. to User),ICW Num Segments (rel. to User),ICW starred,ICW note\n"; 
+		let column_headers = "User display name,User GUID,Results page number,Match name,Match GUID,Match centimorgans,ICW name,ICW GUID,ICW gender,ICW centimorgans (rel. to user),ICW num segments (rel. to user),ICW starred,ICW note\n"; 
 		let data = ext_info + user_info + column_headers + results;
 		let fname = initial_match.sourceguid + "_" + initial_match.pagenum + "_ICW_Matches.csv"
 
