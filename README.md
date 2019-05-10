@@ -4,7 +4,7 @@ ICWtool is a Chrome extension for extracting in common with (shared matches) mat
 The output is a downloaded comma-delimited file that you can use as an input to the processing and
 visualization tools of your choice for further analysis.
 
-To learn more about Ancestry.com's in common with feature, (see Blaine Bettinger's write-up)[https://thegeneticgenealogist.com/2015/08/28/ancestrydna-announces-new-in-common-with-tool/]. Blaine Bettinger also has a great post about (using Ancestry.com's ICW data for clustering analysis, and details some of the pitfalls to watch out for)[https://thegeneticgenealogist.com/2017/01/03/clustering-shared-matches/].
+To learn more about Ancestry.com's in common with feature, [see Blaine Bettinger's write-up](https://thegeneticgenealogist.com/2015/08/28/ancestrydna-announces-new-in-common-with-tool/). Blaine Bettinger also has a great post about [using Ancestry.com's ICW data for clustering analysis, and details some of the pitfalls to watch out for](https://thegeneticgenealogist.com/2017/01/03/clustering-shared-matches/).
 
 ## Overview
 
@@ -73,7 +73,7 @@ As long as I'm caveating: Since ICWtools is a Chrome extension, it is completely
 change how they do things all the time, and any of those changes could make ICWtools inoperable for
 a time, or even permanently.
 
-That said, do feel free to file issues on ICWtool's (Github issue tracker page)[[https://github.com/PollyP/ICWtool/issues].
+That said, do feel free to file issues on [ICWtool's Github issue tracker page](https://github.com/PollyP/ICWtool/issues).
 Developers:  Pull Requests are entirely welcome.
 
 ## Uninstalling ICWtools
@@ -86,14 +86,14 @@ click the "Remove" box next to it.
 ICWtools interacts only with the Ancestry.com website and your computer. It does not communicate
 with any third party websites (e.g., there's no tracking code in the extension). Aside from the generated CSV file, it does not store any information.
 
-I urge you to not take my word for any of it and (examine the source code for yourself)[https://github.com/PollyP/ICWtool].
+I urge you to not take my word for any of it and [examine the source code for yourself](https://github.com/PollyP/ICWtool).
 
 ## License
 
 ICWtools is made available under the (GNU General Public License v3.0)[https://choosealicense.com/licenses/gpl-3.0/].
 The TL;DR of this license is that (1) anyone can use, copy and modify this code, but (2) if you are thinking of redistributing this
 code (say, as part of a commercial product), the GPLv3.0 license imposes additional requirements that you
-should (carefully consider)[https://choosealicense.com/licenses/gpl-3.0/].
+should [carefully consider](https://choosealicense.com/licenses/gpl-3.0/).
 
 
 
