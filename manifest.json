@@ -1,6 +1,6 @@
 {
     "name": "ICWtool",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Get In Common With match data from an Ancestry.com page as a CSV.",
     "permissions": [
       "tabs",
@@ -16,7 +16,7 @@
        "scripts": ["background_script.js"]
      },
      "content_scripts": [ 
-	{ "matches": [  "https://www.ancestry.com/dna/matches/*"], "js": ["content_script.js"] } 
+	{ "matches": [  "https://www.ancestry.com/dna/matches/*", "https://www.ancestry.com/discoveryui-matches/match-list/*" ], "js": ["content_script.js"] } 
      ],
      "manifest_version": 2
   }

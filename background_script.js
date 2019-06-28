@@ -8,21 +8,22 @@
 // process each response to our request for in common with data.
 // if we have processed each icw request, then format the response to
 // popup's get_icw_matches query and send it. 
-function process_icw_matches(initial_match,icw_href, icw_matches, popupresponsef) {
+function process_icw_matches(initial_match, icw_href, icw_matches, popupresponsef) {
 
 	const FILE_VERSION = "1.0"
 
 	// build a record with the fields we're interested in
 	icw_matches.matchGroups.forEach(function(mgroup) {
-		console.log(mgroup);
+		//console.log(mgroup);
 
 		// format each icw response
 		mgroup.matches.forEach(function(m) {
 
 			// double quote user-input strings to escape commas
 			// FIXME FIXME but what if there are double quotes in the field?
-			let escapedicwdisplayname = "\"" + m.matchTestDisplayName + "\"";
-			let escapedicwnote = "\"" + m.note + "\"";
+			let escapedicwdisplayname = "\"" + m.displayName + "\"";
+			let escapedicwnote = "\"" + "" + "\"";
+			//let escapedicwnote = "\"" + m.note + "\"";
 
 			// build the icw string
 			// V1.0 file output
@@ -36,8 +37,8 @@ function process_icw_matches(initial_match,icw_href, icw_matches, popupresponsef
 				escapedicwdisplayname + "," + 
 				m.testGuid + "," + 
 				m.subjectGender + "," +
-				m.sharedCentimorgans + "," + 
-				m.sharedSegments + "," + 
+				m.relationship.sharedCentimorgans + "," + 
+				m.relationship.sharedSegments + "," + 
 				m.starred + "," + 
 				escapedicwnote;
 
@@ -79,20 +80,20 @@ function process_icw_matches(initial_match,icw_href, icw_matches, popupresponsef
 
 // give the source's guid and a match guid, build a href to query for in common with data
 function build_icw_href( sourceguid, matchguid ) {
-	return "https://www.ancestry.com/dna/secure/tests/" + sourceguid + "/matchesInCommon?filterBy=ALL&sortBy=RELATIONSHIP&page=1&matchTestGuid=" + matchguid;
+	return "https://www.ancestry.com/discoveryui-matchesservice/api/samples/" + sourceguid + "/matchesv2?page=1&relationguid=" + matchguid;
 }
 
 // send a request for in common with data and process its results
 function get_icw_matches( initial_match, icw_href, popupresponsef) {
 
 	// FIXME: timeout and set an error message?
-	console.log("Sending icw request");
+	//console.log("Sending icw request");
 	var req = new XMLHttpRequest();
 	req.open("GET", icw_href, true);
 	req.onreadystatechange = function() {
 		if (req.readyState == 4) {
 			if (req.status == 200) {
-				//console.log(req.responseText);
+				//console.log(req);
 				var icw_matches = JSON.parse(req.responseText);
 				// extract icw data and store it
 				process_icw_matches( initial_match, icw_href, icw_matches, popupresponsef );
@@ -123,8 +124,8 @@ chrome.runtime.onMessage.addListener(
 				chrome.tabs.sendMessage(tabs[0].id, {action: "get_initial_matches"}, function(response) {
 
 					// content script replies with a list of initial matches found
-					console.log("background got a get_initial_matches response from content_script");
-					console.log(response);
+					//console.log("background got a get_initial_matches response from content_script");
+					//console.log(response);
 
 					// build a work queue so we can tell when we're done
 					response.initial_matches.forEach(function(initial_match) {
@@ -134,8 +135,9 @@ chrome.runtime.onMessage.addListener(
 
 					// for each initial match, go get the in common withs
 					response.initial_matches.forEach(function(initial_match) {
+						//console.log(initial_match);
 						let icw_href = build_icw_href( initial_match.sourceguid, initial_match.matchguid );
-						console.log(icw_href);
+						//console.log(icw_href);
 						get_icw_matches( initial_match, icw_href, sendResponse );
 					});
 	

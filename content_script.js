@@ -9,20 +9,21 @@
 function processMatchRow(item) {
 
 	// dig out the matchesName element
-	var namenl = item.getElementsByClassName("matchesName");
+	var namenl = item.getElementsByClassName("userCardContent");
 	var namearr = Array.prototype.slice.call(namenl)
-	const nameString = "\"" + namearr[0].innerText + "\"";
+	var namesplit = namearr[0].innerText.split('\n');
+	const nameString = "\"" + namesplit[0] + "\"";
 	//console.log(nameString);
 
 	// dig out the href
-	var nameanl = namearr[0].getElementsByClassName("textxlrg");
+	var nameanl = namearr[0].getElementsByClassName("userCardTitle");
 	var aarr = Array.prototype.slice.call(nameanl)
 	// fixme prepend with https://...
 	const hrefString = aarr[0].getAttribute("href");
 	//console.log(hrefString);
 
 	// dig out the guids for the source and match
-	var guidpatt = /tests\/(.*)\/match\/(.*)\?filterBy/
+	var guidpatt = /compare-ng\/(.*)\/with\/(.*)/
 	var m = guidpatt.exec(hrefString)
 	// FIXME need to test for success
 	const sourceGuidString = m[1];
@@ -30,7 +31,7 @@ function processMatchRow(item) {
 	//console.log(matchGuidString);
 
 	// dig out the cm data
-	var sharedDnanl = item.getElementsByClassName("matchesSharedDna");
+	var sharedDnanl = item.getElementsByClassName("cMText");
 	var sharedDnaarr = Array.prototype.slice.call(sharedDnanl)
 	//console.log(sharedDnaarr[0].innerText);
 	const cmString = "\"" + sharedDnaarr[0].innerText + "\"";
@@ -42,7 +43,7 @@ function processMatchRow(item) {
 
 // find all the matchesRows on the page and extract the data we need from each
 function getMatches() {
-	var mrnl = document.getElementsByClassName("matchesRow");
+	var mrnl = document.getElementsByTagName("match-entry");
 	var mrarr = Array.prototype.slice.call(mrnl)
 	//console.log(mrarr);
 	//console.log(mrarr.length);
@@ -58,14 +59,15 @@ function getPageData() {
 	//console.log(ptarr);
 	var pageTitleString = ptarr[0].innerText;
 	// FIXME will break on other languages
-	var pagetitlepatt = / Results for (.*)$/
+	var pagetitlepatt = /(.*)'s DNA Matches/
 	var m = pagetitlepatt.exec(pageTitleString);
 	var testDisplayNameString = "\"" + m[1] + "\"";
 	//console.log(testDisplayNameString);
 
-	var pagenumpatt = /(page=.*)&?/;
-	var m2 = pagenumpatt.exec(document.location.href);
-	var pageNumString = m2[1];
+	//var pagenumpatt = /(page=.*)&?/;
+	//var m2 = pagenumpatt.exec(document.location.href);
+	//var pageNumString = m2[1];
+	var pageNumString = "1";
 	//console.log(pageNumString);
 
 	return { sourcedisplayname : testDisplayNameString, resultspagenum : pageNumString }
